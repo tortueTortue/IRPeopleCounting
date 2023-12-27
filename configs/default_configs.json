@@ -1,0 +1,25 @@
+{
+    "project_name": "base_project",
+    "model_directory": "/models/trained_models/",
+    "model_name": "base_model",
+    "checkpoint_dir": "/training/checkpoints/",
+    "hyperparameters":
+        {
+            "batch_size": 3,
+            "epochs": 200,
+            "learning_rate": 0.0001,
+            "num_layers" : 2,
+            "num_heads" : 1,
+            "momentum" : 0.9,
+            "beta_1": 0.9,
+            "beta_2": 0.999
+        },
+    "loss" : "MSELoss",
+    "dataset" : "ImageNette",
+    "optimizer" : "ADAMW",
+    "dataset_with_indices" : false,
+    "with_sam_opt" : false,
+    "debug" : false,
+    "note"  : "",
+    "test_on_top_1" : true
+}

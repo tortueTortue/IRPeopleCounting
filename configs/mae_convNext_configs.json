@@ -1,0 +1,27 @@
+{
+    "project_name": "PeopleCounting",
+    "model_directory": "/models/trained_models/",
+    "model_name": "MAEConvNext",
+    "checkpoint_dir": "/training/checkpoints/",
+    "hyperparameters":
+        {
+            "batch_size": 64,
+            "epochs": 500,
+            "warmup_epochs": 40,
+            "learning_rate": 0.0000015,
+            "num_layers" : 2,
+            "num_heads" : 1,
+            "momentum" : 0.9,
+            "beta_1": 0.9,
+            "beta_2": 0.95,
+            "weight_decay": 0.05
+        },
+    "loss" : "FCMaskedAutoEncoderLoss",
+    "dataset" : "ImageNette",
+    "optimizer" : "ADAMW",
+    "dataset_with_indices" : false,
+    "with_sam_opt" : false,
+    "debug" : false,
+    "note"  : "",
+    "test_on_top_1" : true
+}

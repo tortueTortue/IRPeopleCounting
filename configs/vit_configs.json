@@ -1,0 +1,27 @@
+{
+    "project_name": "PeopleCounting",
+    "model_directory": "/models/trained_models/",
+    "model_name": "ViT",
+    "checkpoint_dir": "/training/checkpoints/",
+    "hyperparameters":
+        {
+            "batch_size": 64,
+            "epochs": 450,
+            "warmup_epochs": 20,
+            "learning_rate": 0.0001,
+            "num_layers" : 2,
+            "num_heads" : 1,
+            "momentum" : 0.9,
+            "beta_1": 0.9,
+            "beta_2": 0.95,
+            "weight_decay" : 0.3
+        },
+    "loss" : "MSELoss",
+    "dataset" : "LLVIP",
+    "optimizer" : "ADAMW",
+    "dataset_with_indices" : false,
+    "with_sam_opt" : false,
+    "debug" : false,
+    "note"  : "Pretrained, ThomNorm",
+    "test_on_top_1" : true
+}
