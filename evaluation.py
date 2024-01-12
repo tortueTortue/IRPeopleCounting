@@ -14,9 +14,9 @@ from scipy.optimize import linear_sum_assignment
 def args():
     parser = argparse.ArgumentParser(description="DLTrainer")
     parser.add_argument("--mode", type=str, default='False', help="Whether to evaluation the 'accuracy', 'localization' or the 'speed'.")
-    parser.add_argument("--model_path", type=str, default="vit", help="Path of the model to be evaluated.")
-    parser.add_argument("--dataset_path", type=str, default="vit", help="Path of the dataset.")
-    parser.add_argument("--split", type=str, default="vit", help="Whether to evaluate on the test, validation or training split.")
+    parser.add_argument("--model_path", type=str, default="/model/trained_models/model.pt", help="Path of the model to be evaluated.")
+    parser.add_argument("--dataset_path", type=str, default="/dataset/llvip/", help="Path of the dataset.")
+    parser.add_argument("--split", type=str, default="test", help="Whether to evaluate on the test, validation or training split.")
 
     opt = parser.parse_args()
 

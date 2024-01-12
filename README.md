@@ -54,11 +54,29 @@ All the training results and a measures are reported in the folder <b>/runs/[MOD
 
 ## Evaluation
 
-- model_path [String] : 
-- mode [String] : 
+- mode [String] : Which evaluation you want to make {<b>accuracy</b>|<b>localization</b>|<b>speed</b>}
+- model_path [String] : Path to model.pt
+- dataset_path [String] : Path to dataset
+- split [String] : Which training split you want to make you evaluation on. By default it's test {<b>test</b>|<b>validation</b>|<b>train</b>}
 
 ### Count Accuracy
 
+The count accuracy is the amount of predictions where the number of people predicted in the image is the exact real number divided by the total number of predictions.
+
+Where Ŷ is predictions, $Y is Ground Truths,
+$$ Count Accuracy = {\sum{Ŷ = Y} \over \sum{Ŷ}} $$
+
 ### Location
 
+The localization results are measured using the mean Absolute Euclidean Distance (mAED). We calculate the mAED between the predicted coordinates and the ground truth for all images in the testing set. Both the $x$ and $y$ position coordinates are normalized within the range of 0 to 1. We give a 1 penalty for every wrong point predicted(or not predicted).
+
+The mAED is computed as:
+
+Where M is the amount of images in the dataset, N is the amount of points within the image, p and ^p respectively the closest ground truth and predicted points,
+$$ mAED =  \frac{1}{M} \sum_{j=1}^{M}  \frac{1}{N_j} \sum_{i=1}^{N_j} ||p_{ij}-\hat{p}_{ij}||_{2}^{2} $$
+
 ### Speed
+
+The speed benchmark is reported in FPS for both CPU and GPU.
+
+If there is something missing, unclear or is not working in this repository, feel free to contact me and tell me.
