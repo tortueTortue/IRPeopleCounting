@@ -1,6 +1,9 @@
 # Infrared People Counting
 
 ## Context
+
+![alt text](https://github.com/tortueTortue/IRPeopleCounting/blob/master/Dichotomy.png?raw=true)
+
 This is an implementation of the people counting image-level models from the paper : Evaluating Supervision Levels Trade-Offs for Infrared-Based People Counting.
 https://arxiv.org/pdf/2311.11974.pdf
 
