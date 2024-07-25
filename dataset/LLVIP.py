@@ -55,7 +55,7 @@ class LLVIP(ImageFolder):
             bbox = np.loadtxt(f'/storage/AN91980/Data/LLVIP/labels/{self.imgs[index][0].split("/")[-1].replace("jpg", "txt")}')
             target = (target, bbox)
 
-        return img, target, index
+        return img, target#, index
 
 
 # random crop augumentation

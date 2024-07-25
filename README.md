@@ -46,8 +46,10 @@ Here is an example of the dataset folder structure:
 - small [Boolean] : Whether to use the small version or normal of the model.
 
 ```console
-python train.py --model_type 'ConvNeXt' --mae true --head regression --dataset_root \Data\LLVIP
+python train.py --model_type 'ConvNeXt' --mae --head regression --dataset_root \Data\LLVIP
 ```
+
+If you want to use mae pretraining, you have to train using the "--mae", after training the model will be saved in the /models/trained_models/. Then when training the classifier use, specify the path to the pretrained model to the "--mae_cp_path".
 
 ### Results & Measurements
 All the training results and a measures are reported in the folder <b>/runs/[MODEL_NAME]_[DATETIME_OF_TRAINING]</b>

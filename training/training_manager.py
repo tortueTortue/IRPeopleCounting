@@ -7,8 +7,6 @@ from pyclbr import Function
 from torch.utils.data import Dataset, DataLoader
 from torch.nn import Module, CrossEntropyLoss, MSELoss, BCELoss
 from training.loss.mae_loss import MaskedAutoEncoderLoss, FCMaskedAutoEncoderLoss
-from training.loss.distillation_loss import DistLoss
-from training.loss.ordinal_entropy_loss import OrdinalEntropyLoss
 from torch.optim import SGD, Adam, AdamW
 from statistics import mean
 
@@ -20,7 +18,7 @@ from tools.build_report import build_spreadsheet_from_logs, build_graphs_from_lo
 from training.utils.utils import save_model, load_model, load_checkpoint
 
 ADAM, SGD_, ADAMW = 'ADAM', 'SGD', 'ADAMW'
-LOSS = {'CrossEntropyLoss' : CrossEntropyLoss, 'MSELoss' : MSELoss, 'BCELoss' : BCELoss, 'DistLoss' : DistLoss, 'MaskedAutoEncoderLoss' : MaskedAutoEncoderLoss, 'FCMaskedAutoEncoderLoss' : FCMaskedAutoEncoderLoss, 'OrdinalEntropyLoss' : OrdinalEntropyLoss}
+LOSS = {'CrossEntropyLoss' : CrossEntropyLoss, 'MSELoss' : MSELoss, 'BCELoss' : BCELoss, 'MaskedAutoEncoderLoss' : MaskedAutoEncoderLoss, 'FCMaskedAutoEncoderLoss' : FCMaskedAutoEncoderLoss}
 DEFAULT_CONFIG = {'hyperparameters' : {  'epochs'         : 100,
                                          'learning_rate'  : 0.001,
                                          'momentum'       : 0.9,

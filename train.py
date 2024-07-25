@@ -4,9 +4,6 @@ from torch import nn
 from training.training_manager import TrainingManager, DEFAULT_CONFIG
 from tools.config_utils import load_config
 from dataset.LLVIP import LLVIPDataset
-from dataset.DistechUnlabelledSequences import DistechSequencesDatasetV19
-from dataset.DistechV11 import DistechV11Dataset
-from dataset.DistechV19 import DistechV19Dataset
 from models.CrowdViT import MAEViT, VeryBigCrowdViT
 from models.CrowdConvNext import CrowdConvNext, MAEConvNext
 from training.utils.utils import load_model, load_checkpoint
@@ -22,22 +19,20 @@ def parse_checkpoint(cp_path):
     return out
 
 def args():
-    def to_bool(str_): return 'true' in str_.lower()
     parser = argparse.ArgumentParser(description="DLTrainer")
-    parser.add_argument("--mae", type=str, default='False', help="Whether to use Masked Autoencoder pretraining or not.")
+
     parser.add_argument("--model_type", type=str, default="vit", help="ViT or ConvNeXt")
-    parser.add_argument("--pretrained", type=str, default='True')
     parser.add_argument("--head", type=str, default="classification", help="classification or regression")
     parser.add_argument("--dataset_root", type=str, default='/data/LLVIP/infrared/', help="Dataset Root path")
     parser.add_argument("--mae_cp_path", type=str, default=None, help="Checkpoint path")
     parser.add_argument("--sub_ratio", type=float, default=1, help="Train ratio")
-    parser.add_argument("--small", type=str, default='False', help="Whether to use the small version or normal of the model")
-    
-    if opt.model_type.lower() in 'convnext': opt.model_type = 'cnn'
+    parser.add_argument("--mae", action='store_true', help="Whether to use Masked Autoencoder pretraining or not.")
+    parser.add_argument("--pretrained", action='store_true', help="Whether to use pretrained model or not.")
+    parser.add_argument("--small", action='store_true', help="Whether to use the small version of the model or not.")
+
+
     opt = parser.parse_args()
-    opt.mae = to_bool(opt.mae)
-    opt.pretrained = to_bool(opt.pretrained)
-    opt.small = to_bool(opt.small)
+    if opt.model_type.lower() in 'convnext': opt.model_type = 'cnn'
 
     return opt
 
