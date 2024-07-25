@@ -131,7 +131,7 @@ class TrainingManager:
 
     def compile_iteration_results(self, results, out, labels, current_loss):
         results['losses'].append(current_loss.item())
-        if not isinstance(self.loss, MSELoss) and not isinstance(self.loss, DistLoss):
+        if not isinstance(self.loss, MSELoss):
             _, preds = torch.max(out, dim=1)
             results['total_preds'] += len(preds)
             results['correct_preds'] += torch.sum(preds == labels).item()
@@ -140,7 +140,7 @@ class TrainingManager:
 
     def training_step_results(self, iteration_results):
         losses = iteration_results['losses']
-        if not isinstance(self.loss, MSELoss) and not isinstance(self.loss, DistLoss):
+        if not isinstance(self.loss, MSELoss):
             correct = iteration_results['correct_preds']
             total = iteration_results['total_preds']
             return {'train_loss': mean(losses), 'train_acc': correct/total}
